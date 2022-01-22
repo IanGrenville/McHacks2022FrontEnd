@@ -1,14 +1,3 @@
-<script type="module">
-import * as Plot from "https://cdn.skypack.dev/@observablehq/plot@0.4";
-data = FileAttachment("fake_data.csv").csv({typed: true})
-document.body.appendChild(
-  Plot.plot({
-  marks: [
-    Plot.ruleX([0]),
-    Plot.barX(data, {x: "Player", y: "Percentage Negative Sentiment"})
-  ]
-}));
-</script>
 
 
 
