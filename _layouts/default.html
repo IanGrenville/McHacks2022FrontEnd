@@ -24,6 +24,12 @@ function makeChart(players) {
   var chart = new Chart('chart', {
     type: "horizontalBar",
     options: {
+	elements : {
+		bar: {
+			borderWidth: 20,
+			backgroundColour: rgba(255, 0, 0, 0.1)
+		}
+	},
       maintainAspectRatio: true,
       legend: {
         display: false
