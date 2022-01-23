@@ -9,27 +9,54 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script type="module">
-    import * as Plot from "https://cdn.skypack.dev/@observablehq/plot@0.4";
-	import * as Papa from "./scripts/papaparse.min.js";
-	var data;	
-	Papa.parse("./scripts/fake_data.csv", {
-		download: true,
-		dynamicTyping: true,
-		complete: function(results) {
-		data = results;
-		}
-	});
-       
-      document.body.appendChild(
-         Plot.plot({
-         marks: [
-          Plot.ruleX([0]),
-          Plot.barX(data, {x: "Player", y: "Percentage Negative Sentiment"})
-         ]
-          }));
-     </script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+	<script>
+function makeChart(players) {
 
+  var playerLabels = players.map(function(d) {
+    return d.Player;
+  });
+  var sentimentData = players.map(function(d) {
+    return d.Sentiment;
+  });
+
+  var chart = new Chart('chart', {
+    type: "horizontalBar",
+    options: {
+      maintainAspectRatio: false,
+      legend: {
+        display: false
+      },
+       scales: {
+        xAxes: [
+          {
+            scaleLabel: {
+              display: true,
+              labelString: 'Public Sentiment',
+              fontSize: 20
+            }
+          }
+        ]
+      }
+    },
+    data: {
+      labels: playerLabels,
+      datasets: [
+        {
+          data: sentimentData
+        }
+      ]
+    }
+  });
+}
+
+// Request data using D3
+d3
+  .csv("./scripts/fake_data.csv")
+  .then(makeChart);
+
+	  </script>
 
 {% seo %}
     {% include head-custom.html %}
@@ -59,6 +86,7 @@
         <hr>
         <section id="main_content">
           {{ content }}
+	<canvas id="chart"></canvas>
         </section>
 
         <footer>
