@@ -20,7 +20,8 @@ function makeChart(players) {
   var sentimentData = players.map(function(d) {
     return d.Sentiment;
   });
-
+Chart.defaults.font.size = 16;
+Chart.defaults.font.lineHeight = 2.5;
   var chart = new Chart('chart', {
     type: "horizontalBar",
     options: {
