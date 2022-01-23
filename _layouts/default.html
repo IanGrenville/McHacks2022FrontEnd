@@ -24,6 +24,9 @@ function makeChart(players) {
     type: "horizontalBar",
     options: {
       maintainAspectRatio: false,
+	animation : {
+		duration: 200
+	},
       legend: {
         display: false
       },
@@ -57,7 +60,6 @@ d3
 
 window.addEventListener('load', function () {
   document.getElementById("chart").style.display = "";
-  alert("Resized?");
 })
 
 	  </script>
