@@ -21,10 +21,11 @@ function makeChart(players) {
     return d.Sentiment;
   });
   var chart = new Chart('chart', {
-    type: "horizontalBar",
+    type: "bar",
     options: {
       maintainAspectRatio: false,
 	responsive: false,
+	indexAxis: 'y',
       legend: {
         display: false
       },
