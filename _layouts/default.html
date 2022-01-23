@@ -20,12 +20,9 @@ function makeChart(players) {
   var sentimentData = players.map(function(d) {
     return d.Sentiment;
   });
-Chart.defaults.font.size = 16;
-Chart.defaults.font.lineHeight = 2.5;
   var chart = new Chart('chart', {
     type: "horizontalBar",
     options: {
-	barPercentage : 0.6,
       maintainAspectRatio: false,
       legend: {
         display: false
@@ -88,7 +85,7 @@ d3
         <hr>
         <section id="main_content">
           {{ content }}
-	<canvas id="chart"></canvas>
+	<canvas id="chart" width="auto" height="auto" ></canvas>
         </section>
 
         <footer>
