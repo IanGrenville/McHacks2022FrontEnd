@@ -55,9 +55,10 @@ d3
   .csv("./scripts/fake_data.csv")
   .then(makeChart);
 
-document.getElementById("chart").style.width = "auto";
-document.getElementById("chart").style.height= "auto";
+document.getElementById("chart").style.display = "";
+
 	  </script>
+
 
 {% seo %}
     {% include head-custom.html %}
@@ -87,7 +88,7 @@ document.getElementById("chart").style.height= "auto";
         <hr>
         <section id="main_content">
           {{ content }}
-	<div class="chart-container" style="position: relative; height:auto; width:auto">
+	<div class="chart-container" style="position: relative; height:auto; width:auto display:">
    	 <canvas id="chart"></canvas>
 	</div>
         </section>
